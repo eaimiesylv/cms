@@ -118,7 +118,7 @@
                             
                         </li>
                         
-                        <li><i class="fa-solid fa-bars mobile" id="mobile_bar"></i>menu them</li>
+                        <li><i class="fa-solid fa-bars mobileda" id="mobile_bar"></i>menu them</li>
                       
                         
         
