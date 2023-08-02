@@ -12,6 +12,6 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.majestylearningfields.com
-          username: eaimiesylv@majestylearningfields.com
+          username: eaimiesylv@cms.majestylearningfields.com
           password: BCTdIDWBCTdIDW
           server-dir: "/"
