@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +20,11 @@
             list-style-type:none;
         }
         ul{
-            paddding:0;
+            padding:0;
             margin:0;
+        }
+        .logo{
+            height:70px;
         }
         a {
             text-decoration:none !important;
@@ -37,7 +40,7 @@
                
                 
             }
-           nav .fa-solid{
+            nav .fa-solid{
                 color:white;
              }
              nav{
@@ -57,6 +60,7 @@
             nav li:last-child {
                 margin-left: auto;
             }
+          
             aside{
                 display:none;
             }
@@ -64,7 +68,8 @@
                 position:absolute;
                 background:white;
                 min-height:100vh;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                /*
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
                 width:auto;
                 left:0px;
                 z-index:2;
@@ -79,30 +84,25 @@
                 color:blue;
                 padding-right:0.3em;
              }
-             .show{
-                display:block;
-            }
            
-            .content{
-                background:white;
-                margin-top:2em;
-                padding:2em;
-               
-            }
+            
             @media (min-width:900px)  {
                 aside{
                     display:block;
                  } 
+                #content{
+                    padding-left:15em;
+                }
             }
         </style>
     </head>
     <body>
             <aside>
-                <div style="text-align:center" ><img src="{{asset('images/logo.jpg')}}"/></div>
+                <div style="text-align:center" ><img src="{{asset('images/logo.jpg')}}" class="logo"/></div>
                 <ul>
                   
                     <li><i class="fa-solid fa-bar-chart"></i><a href="/">Category</a></li>
-                    <li><i class="fa-solid fa-book"></i><a href="/lga_result">LGA Result</a></li>
+                    <li><i class="fa-solid fa-book"></i><a href="/#">LGA Result</a></li>
                     <li><i class="fa-solid fa-upload"></i><a href="/party">Enter Party Result</a></li>
                     
                     
@@ -114,20 +114,20 @@
                     <ul>
                      
                         <li>
-                           <img src="{{asset('images/banner.png')}}"/>
+                           <img src="{{asset('images/logo.jpg')}}" class="logo"/>
                             
                         </li>
                         
-                        <li><i class="fa-solid fa-bars mobileda" id="mobile_bar"></i>menu them</li>
+                        <li><i class="fa-solid fa-bars mobile" id="mobile_bar"></i></li>
                       
                         
         
-                        <li><i class="fa-solid fa-user mobile"></i></li>
+                        
                     </ul>
             
                 </nav>
-                <section class="row">
-                
+                <section class="row" id="content">
+                    that is what i am saying. hope you like it
                      @yield('content')
                 </section>
             </main>
@@ -139,9 +139,11 @@
             $("#mobile_bar").click(function(e) {
                
                 if ($("aside").css("display") == "none") {
-                $("aside").css("display", "block");
+                 $("aside").css("display", "block");
+                 $("#content").css("padding-left", "15em");
             } else {
                 $("aside").css("display", "none");
+                $("#content").css("padding-left", "2em");
             }
             
             });
