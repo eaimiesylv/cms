@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100)->unique();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

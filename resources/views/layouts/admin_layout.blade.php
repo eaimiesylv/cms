@@ -83,16 +83,27 @@
             aside .fa-solid{
                 color:blue;
                 padding-right:0.3em;
+               
              }
-           
-            
+           section{
+          
+            overflow-x:hidden;
+            padding-left:15em;
+            padding-right:2em;
+            padding-top:1em;
+           }
+            button{
+                margin:1em 0;
+            }
+            label{
+                font-weight:bold;
+             
+            }
             @media (min-width:900px)  {
                 aside{
                     display:block;
                  } 
-                #content{
-                    padding-left:15em;
-                }
+               
             }
         </style>
     </head>
@@ -101,9 +112,9 @@
                 <div style="text-align:center" ><img src="{{asset('images/logo.jpg')}}" class="logo"/></div>
                 <ul>
                   
-                    <li><i class="fa-solid fa-bar-chart"></i><a href="/">Create Category</a></li>
-                    <li><i class="fa-solid fa-book"></i><a href="/create_category">Create Page</a></li>
-                    <li><i class="fa-solid fa-upload"></i><a href="/party">Customise Page layout</a></li>
+                    <li><i class="fa-solid fa-bar-chart"></i><a href="/category">Category</a></li>
+                    <li><i class="fa-solid fa-book"></i><a href="/page">Create Page</a></li>
+                    <li><i class="fa-solid fa-upload"></i><a href="/create_category">Page Builder</a></li>
                     
                     
                  </ul>
@@ -126,8 +137,8 @@
                     </ul>
             
                 </nav>
-                <section class="row" id="content">
-                    that is what i am saying. hope you like it
+                <section id="content">
+                  
                      @yield('content')
                 </section>
             </main>
