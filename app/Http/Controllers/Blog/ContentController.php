@@ -15,6 +15,7 @@ class ContentController extends Controller
     private $content;
     public function __construct(ContentRepo $contentRepos){
         $this->content=$contentRepos;
+        $this->middleware('auth');
     }
     public function index()
     {
@@ -62,5 +63,8 @@ class ContentController extends Controller
       Session::flash('success', "Category has been deleted successfully");
       return redirect()->route('category.index');
 
+    }
+    public function page_category(){
+       return Content::whereHas('page_category')->get();
     }
 }

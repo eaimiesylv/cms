@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('page_content', function (Blueprint $table) {
+         Schema::create('page_categories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('page_id');
             $table->unsignedBigInteger('content_id');
@@ -22,12 +22,11 @@ return new class extends Migration
         });
     }
 
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('assign_page_contents');
+        Schema::dropIfExists('page_categories');
     }
 };

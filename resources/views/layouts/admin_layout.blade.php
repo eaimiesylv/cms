@@ -113,9 +113,11 @@
                 <div style="text-align:center" ><img src="{{asset('images/logo.jpg')}}" class="logo"/></div>
                 <ul>
                   
-                    <li><i class="fa-solid fa-bar-chart"></i><a href="/category">Category</a></li>
-                    <li><i class="fa-solid fa-book"></i><a href="/pages">Create Page</a></li>
-                    <li><i class="fa-solid fa-upload"></i><a href="/page_category">Page Category</a></li>
+                    <li><i class="fa-solid fa-bar-chart"></i><a href="/category">Categories</a></li>
+                    <li><i class="fa-solid fa-book"></i><a href="/pages">Pages</a></li>
+                    <li><i class="fa-solid fa-upload"></i><a href="/page_category">Assign Category</a></li>
+                   <li><i class="fa-solid fa-eye"></i><a href="/assign">View Category</a></li>
+                    
                     
                     
                  </ul>

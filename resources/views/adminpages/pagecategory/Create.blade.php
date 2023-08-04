@@ -14,7 +14,7 @@
                 <div class="row">
 
                     <div class="col-md-10">
-                        <label for="category" class="col-md-12 col-form-label text-md-start">{{ __('Enter Page title') }}</label>
+                        <label for="category" class="col-md-12 col-form-label text-md-start">{{ __('Enter Category title') }}</label>
                         <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('name') }}" required autocomplete="name" autofocus>
                         @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -56,7 +56,6 @@
                     @else
                     <div class="col-md-10 mt-1">
                         <p>Run the seeder command to populate the MetaDataSeeder.</p>
-                        php artisan db:seed --class=MetaDataSeeder
                     </div>
                     @endif
 

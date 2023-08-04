@@ -10,7 +10,7 @@
 @section('content')
 <div id="container_content">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
+        <div class="col-md-10 offset-md-1">
             <a href="{{ url('/category/create') }}">
                 <button type="button" class="btn btn-primary m-2" style="width: 150px">
                     <i class="fa-solid fa-plus"></i>
@@ -26,16 +26,12 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Created At</th>
-                                <th>Edit Category</th>
-                                <th>Delete Category</th>
-                                <th>Add Page</th>
+                                <th colspan="3">Action</th>
                                 <!-- Add more table headers as needed -->
                             </tr>
                         </thead>
                         <tbody>
-                            @php
-                                $serialNumber = 1;
-                            @endphp
+                            
                             @foreach ($content as $key=>$item)
                                 <tr>
                                     <td>{{$content->firstItem() + $key }}</td>
@@ -49,8 +45,7 @@
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
                                         </form>
                                     </td>
-                                    <td><a href="{{ route('category.create') }}" class="btn btn-success">Add Page</a></td>
-
+                                  
                                     <!-- Add more table cells as needed -->
                                 </tr>
                             @endforeach

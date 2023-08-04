@@ -11,6 +11,10 @@ class ContentRepo{
 		
 		return Content::paginate(15);
 	}
+	public function allcategories(){
+		
+		return Content::select('id','name')->get();
+	}
 }
 
 

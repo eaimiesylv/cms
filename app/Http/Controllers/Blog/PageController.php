@@ -10,6 +10,8 @@ use App\Repositories\MetaDataRepo;
 use App\Trait\HandleException;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
@@ -22,8 +24,8 @@ class PageController extends Controller
     }
     public function index()
     {
-   
-        return view('adminpages.pages.index', array('page' =>$this->page->all()));
+      
+        return view('adminpages.pages.index', array('content' =>$this->page->all()));
     }
     public function create()
     {
@@ -77,7 +79,8 @@ class PageController extends Controller
             DB::rollback();
             throw $e;
         } 
-        return 'successful';
+        Session::flash('success', "The page has been created succesfully");
+        return redirect()->route('category.index');
     }
 
     /**
@@ -85,7 +88,8 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
+        
+        return view('adminpages.pages.show', array('content' =>$this->page->findById($page)));
     }
 
     /**
@@ -93,22 +97,56 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        return view('adminpages.pages.edit', array('content' =>$page));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Page $page)
+    public function update(PageFormRequest $request, Page $page)
     {
-        //
-    }
+        try {
+            $fileName = $request->old_file; 
+            $previousImagePath = null;
+            if ($request->hasFile('file')) {
+                $file = $request->file('file');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+               
+                // Move the new file to the storage area (storage/app/public/files)
+                $file->storeAs('public/files', $fileName);
 
-    /**
-     * Remove the specified resource from storage.
-     */
+                $previousImagePath = storage_path('app/public/files/' . $request->old_file);
+               
+                $page->update(array_merge($request->all(), ['post_image' => $fileName]));
+            }
+            else{
+            $page->update($request->all());
+            }
+           
+            if ($previousImagePath) {
+                Storage::delete($previousImagePath);
+              
+            }
+            Session::flash('success', "page update was successful");
+            //return redirect()->route('pages.index');
+           
+            
+            return redirect()->route('pages.show', ['page' => $page->id]);
+
+
+          
+        
+        } catch (QueryException $e) {
+            return $e->getMessage();
+        }
+        
+       
+    
+       
+    }
+    
     public function destroy(Page $page)
     {
-        //
+      $page->delete();
+      Session::flash('success', "page has been deleted successfully");
+      return redirect()->route('pages.index');
+
     }
+   
 }

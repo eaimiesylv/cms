@@ -13,4 +13,7 @@ class Content extends Model
         'name',
         
     ];
+    public function page_category(){
+        return $this->belongsTo(PageCategory::class,'content_id','page_id');
+    }
 }

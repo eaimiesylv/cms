@@ -8,7 +8,7 @@
 @section('content')
 <div id="container_content">
 	<div class="row">
-        <div class="col-md-8 offset-md-2"> 
+        <div class="col-md-10 offset-md-1"> 
 		  <a href="/pages/create">
 			<button type="button" class="btn btn-primary m-2" style="width:150px">
 				<i class="fa-solid fa-plus"></i>
@@ -18,7 +18,7 @@
 
 			<div class="mt-2 col-sm-12 col-md-12">
 				
-
+            
 					
 					<!-- adminpages.blog.index.blade.php -->
 
@@ -28,32 +28,43 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Created At</th>
-                                <th>Edit Category</th>
-                                <th>Delete Category</th>
-                                <th>Add Page</th>
+                                <th>Content</th>
+                                <th>Meta Data</th>
+                                <th colspan="3">Action</th>
+                               
                                 <!-- Add more table headers as needed -->
                             </tr>
                         </thead>
                         <tbody>
-                @php
-                    $serialNumber = 1;
-                @endphp
-                @foreach ($content as $item)
+                
+                @foreach ($content as $key=> $item)
                 <tr>
-                    <td>{{ $serialNumber++ }}</td>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->created_at }}</td>
-                    <td><a href="{{ route('category.edit', $item->id) }}" class="btn btn-primary">Edit</a></td>
+                   <td>{{$content->firstItem() + $key }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->content }}</td>
                     <td>
-                        <form action="{{ route('category.destroy', $item->id) }}" method="POST">
+                    @if(isset($item->page_metadata) && is_countable($item->page_metadata) && count($item->page_metadata) > 0) 
+                        
+                     @foreach ($item->page_metadata as $key2=> $item2)
+                    
+                          {{$item2->metadata->meta_name}}, 
+                            <!--{{$item2->meta_description}};-->
+                            @if(($key2 + 1) % 2 === 0)
+                                <br>
+                            @endif
+                     @endforeach
+                        </ul>
+                    @endif
+                    </td>
+                    <td><a href="{{ route('pages.show', $item->id) }}" class="btn btn-warning">View</a></td>
+                    <td>
+                        <form action="{{ route('pages.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this page?')">Delete</button>
                         </form>
                     </td>
-                    <td><a href="{{ route('category.create') }}" class="btn btn-success">Add Page</a></td>
-
+                  
                     <!-- Add more table cells as needed -->
                 </tr>
                 @endforeach
