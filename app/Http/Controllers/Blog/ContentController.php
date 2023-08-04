@@ -5,80 +5,53 @@ use App\Http\Controllers\Controller;
 use App\Models\Content;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContentFormRequest;
-use Illuminate\Database\QueryException;
+use App\Repositories\ContentRepo;
+use App\Trait\HandleException;
 use Illuminate\Support\Facades\Session;
 
 class ContentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    use HandleException;
+    private $content;
+    public function __construct(ContentRepo $contentRepos){
+        $this->content=$contentRepos;
+    }
     public function index()
     {
-        $content=Content::all();
-        return view('adminpages.category.index', array('content'=>$content));
+      
+        return view('adminpages.category.index', array('content' =>$this->content->all()));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('adminpages.category.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(ContentFormRequest $request)
     { 
-        try{
-            Content::Create($request->all());
-            Session::flash('message', "Category has been created successfully");
-            return redirect()->route('category.index');
-        }
-        catch(QueryException $e){
-            Session::flash('error', "Try again");
-            return redirect()->route('category.index');
-        }
+        $this->tryCatch(function () use ($request) {
+            Content::create($request->all());
+        }, 'Category has been created successfully');
+
+        return redirect()->route('category.index');
 
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Content $content)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Content $category)
     {
         
         return view('adminpages.category.edit', compact('category'));
        
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-   
-    
     public function update(ContentFormRequest $request, Content $category)
     {
-        
-        try{
+        $this->tryCatch(function () use ($request, $category) {
             $category->update($request->all());
-            Session::flash('message', "Category has been updated successfully");
-            return redirect()->route('category.index');
-        }
-        catch(QueryException $e){
-            Session::flash('error', "Try again");
-            return redirect()->route('category.index');
-        }
+        }, 'Category has been updated successfully');
+
+        return redirect()->route('category.index');
+       
     
        
     }
@@ -86,7 +59,7 @@ class ContentController extends Controller
     public function destroy(Content $category)
     {
       $category->delete();
-      Session::flash('message', "Category has been deleted successfully");
+      Session::flash('success', "Category has been deleted successfully");
       return redirect()->route('category.index');
 
     }

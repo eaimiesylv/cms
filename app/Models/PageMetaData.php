@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class PageMetaData extends Model
 {
     use HasFactory;
-   
-    protected $fillable=['title','content','post_image'];
+    protected $fillable=['page_id','meta_data_id','meta_description'];
 }

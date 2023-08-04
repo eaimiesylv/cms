@@ -97,8 +97,8 @@
         </style>
     </head>
     <body>
-            <aside>
-                <div style="text-align:center" ><img src="{{asset('images/logo.jpg')}}" class="logo"/></div>
+          <aside>
+                 <!-- <div style="text-align:center" ><img src="{{asset('images/logo.jpg')}}" class="logo"/></div>
                 <ul>
                   
                     <li><i class="fa-solid fa-bar-chart"></i><a href="/">Create Category</a></li>
@@ -106,10 +106,10 @@
                     <li><i class="fa-solid fa-upload"></i><a href="/party">Customise Page layout</a></li>
                     
                     
-                 </ul>
+                 </ul>-->
             </aside>
             <main>
-                <nav>
+                <!--<nav>
                     
                     <ul>
                      
@@ -125,10 +125,9 @@
                         
                     </ul>
             
-                </nav>
+                </nav>-->
                 <section class="row" id="content">
-                    that is what i am saying. hope you like it
-                     @yield('content')
+                   
                 </section>
             </main>
     </body>

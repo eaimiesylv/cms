@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Blog\ContentController;
+//use App\Http\Controllers\Blog\ContentController;
+//use App\Http\Controllers\Blog\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,14 @@ use App\Http\Controllers\Blog\ContentController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/template', function () {
+    return view('template');
+});
 
 
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route::get('/category/create', [App\Http\Controllers\Blog\ContentController::class, 'create']);
-Route::resource('category', ContentController::class);
+Route::resource('category', App\Http\Controllers\Blog\ContentController::class);
+Route::resource('pages',  App\Http\Controllers\Blog\PageController::class);

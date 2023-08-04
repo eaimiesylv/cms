@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('meta_data', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 200);
-            $table->longText('content');
-            $table->string('post_image', 300)->nullabe();
+        
+            $table->string('meta_name', 100);
             $table->timestamps();
+
+            
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('meta_data');
     }
 };

@@ -10,7 +10,7 @@
 	<div class="row">
         <div class="col-md-8 offset-md-2">
             <form method="POST"  class="" action="/category">
-                            @csrf
+             @csrf
 
                 <div class="row">
                         <label for="category" class="col-md-12 col-form-label text-md-start">{{ __('Enter category name') }}</label>
