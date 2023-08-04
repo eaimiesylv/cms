@@ -33,15 +33,18 @@ Visit the browser
 
 **View Pages**
 
-![Uploading viewPages.PNG…]()
+![viewPages](https://github.com/eaimiesylv/cms/assets/50324524/4d516247-7afe-466c-97a5-6b74ca807f22)
+
 
 **Create Page**
 
-![Uploading create_page.PNG…]()
+![create_page](https://github.com/eaimiesylv/cms/assets/50324524/0da80a9c-a434-44a3-aa66-c8e6be826078)
+
 
 **Asign Page To Category**
-![Uploading assign_page.PNG…]()
 
+
+![assign_page](https://github.com/eaimiesylv/cms/assets/50324524/cfa870fe-0520-432f-b348-1c04acf2623c)
 
 
 
