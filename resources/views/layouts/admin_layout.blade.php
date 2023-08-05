@@ -110,13 +110,20 @@
     </head>
     <body>
             <aside>
-                <div style="text-align:center" ><img src="{{asset('images/logo.jpg')}}" class="logo"/></div>
+                <div style="text-align:center" ><a href="/"><img src="{{asset('images/logo.jpg')}}" class="logo"/></a></div>
                 <ul>
                   
                     <li><i class="fa-solid fa-bar-chart"></i><a href="/category">Categories</a></li>
                     <li><i class="fa-solid fa-book"></i><a href="/pages">Pages</a></li>
                     <li><i class="fa-solid fa-upload"></i><a href="/page_category">Assign Category</a></li>
                    <li><i class="fa-solid fa-eye"></i><a href="/assign">View Category</a></li>
+                   <li>
+                    <a class="desktop-li" href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">
+                        <i class="fa-solid fa-sign-out"></i> <span>{{ __('Logout') }}</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                  </li>
+
                     
                     
                     
@@ -128,7 +135,7 @@
                     <ul>
                      
                         <li>
-                           <img src="{{asset('images/logo.jpg')}}" class="logo"/>
+                        <a href="/"><img src="{{asset('images/logo.jpg')}}" class="logo"/></a>
                             
                         </li>
                         

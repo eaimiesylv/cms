@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
 
+
 class PageController extends Controller
 {
     use HandleException;
@@ -80,7 +81,7 @@ class PageController extends Controller
             throw $e;
         } 
         Session::flash('success', "The page has been created succesfully");
-        return redirect()->route('category.index');
+        return redirect()->route('pages.index');
     }
 
     /**

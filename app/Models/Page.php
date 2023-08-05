@@ -14,4 +14,5 @@ class Page extends Model
     public function page_metadata(){
         return $this->hasMany(PageMetaData::class,'page_id','id');
     }
+    
 }

@@ -15,7 +15,7 @@ class ContentController extends Controller
     private $content;
     public function __construct(ContentRepo $contentRepos){
         $this->content=$contentRepos;
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
     public function index()
     {
@@ -65,6 +65,15 @@ class ContentController extends Controller
 
     }
     public function page_category(){
-       return Content::whereHas('page_category')->get();
+        
+        return view('adminpages.pagecategory.PageCategory', array('content' =>$this->content->pageCategory('paginate')));
     }
+    public function homepage($id='null'){
+        
+        $content=$this->content->pageCategory('all');
+        $main =$this->content->pageCategory($id);
+        return view('welcome', compact('content','main'));
+    }
+   
+    
 }

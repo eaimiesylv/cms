@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
             $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');
-            $table->unique(['page_id', 'content_id']);
+           
         });
     }
 

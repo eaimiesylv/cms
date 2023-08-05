@@ -14,6 +14,6 @@ class Content extends Model
         
     ];
     public function page_category(){
-        return $this->belongsTo(PageCategory::class,'content_id','page_id');
+        return $this->hasMany(PageCategory::class,'content_id','id');
     }
 }
